@@ -74,4 +74,15 @@ Route::get('/bookDetail/{id}', function (string $id) {
     ]);
 });
 
-Route::resource('books', AdminBookController::class);
+Route::prefix('admin')->group(function () {
+    Route::resource('/books', AdminBookController::class);
+});
+// Route::prefix('admin')->group(function () {
+//     Route::get('/books', [AdminBookController::class, 'index'])->name('books.index');
+//     Route::get('/books/create', [AdminBookController::class, 'create'])->name('books.create');
+//     Route::post('/books', [AdminBookController::class, 'store'])->name('books.store');
+//     Route::get('/books/{id}', [AdminBookController::class, 'show'])->name('books.show');
+//     Route::get('/books/{id}/edit', [AdminBookController::class, 'edit'])->name('books.edit');
+//     Route::put('/books/{id}', [AdminBookController::class, 'update'])->name('books.update');
+//     Route::delete('/books/{id}', [AdminBookController::class, 'destroy'])->name('books.destroy');
+// });
